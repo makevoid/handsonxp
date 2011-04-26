@@ -53,7 +53,7 @@ namespace :deploy do
   
   desc "Create some symlinks from shared to public"
   task :create_symlinks do
-    run "cd #{current_path}/public; ln -s #{deploy_to}/shared/projects_src projects_src"
+    run "cd #{current_path}/public; ln -s #{deploy_to}/shared/creations creations"
   end
   
 end
