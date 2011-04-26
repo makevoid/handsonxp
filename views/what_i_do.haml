@@ -1,0 +1,14 @@
+%h2 What I do!
+
+%ul#what_i_do
+  - unless @creations == []
+    - @creations.each do |creation|
+      %li 
+        - url = "/creations/#{creation.id}"
+        %p  
+          - link_to creation.name, url
+        - link_to "<img src='#{creation.link}' />", url
+  - else
+    %li.no_creations 
+      You haven't uploaded what you do!
+      - link_to "Start now", "/creations_new"

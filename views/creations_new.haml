@@ -1,0 +1,16 @@
+%h2 What I do!
+
+%ul#what_i_do
+  
+
+%form{ action: "/creations", method: "post", enctype: "multipart/form-data" }       
+  %label Name                         
+  %input{ type: "text", name: "creation[name]" }
+  %label Name                         
+  %input{ type: "file", name: "file" }
+  %label Category                         
+  %input{ type: "text", name: "creation[category]" }
+  %label Description                         
+  %textarea{ name: "creation[description]" }
+  
+  %input{ type: "submit", value: "Create" }
