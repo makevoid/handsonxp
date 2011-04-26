@@ -15,7 +15,7 @@ user = ""
 
 if env == "production"
   pass = File.read(File.expand_path "~/.password").strip
-  user = "#root@{pass}:" 
+  user = "root@#{pass}:" 
 end
 
 DataMapper.setup :default, "mysql://#{user}localhost/handsonxp_#{env}"
