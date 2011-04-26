@@ -3,7 +3,7 @@
 %ul#what_i_do
   - unless @creations == []
     %li 
-      - link_to "Start now", "/creations/new", class: "btn"
+      - link_to "New creation", "/creations/new", class: "btn"
     - @creations.each do |creation|
       %li 
         - url = "/creations/#{creation.id}"

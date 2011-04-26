@@ -40,7 +40,11 @@ class Handsonxp < Sinatra::Base
   get "/" do
     haml :index
   end
-
+  
+  get "/creations/new" do
+    haml :creations_new
+  end
+  
   get "/creations/*" do |id|
     @creation = Creation.get id
     return not_found if @creation.nil?
@@ -56,9 +60,6 @@ class Handsonxp < Sinatra::Base
     haml :what_i_do
   end
   
-  get "/creations/new" do
-    haml :creations_new
-  end
   
   get "/category/*" do |category|
     @category = category
