@@ -13,7 +13,7 @@ set :scm, "git"
 set :branch, "master"
 set :deploy_via, :remote_cache
 
-set :password, File.read("/Users/makevoid/.password").strip.gsub(/33/, '')
+set :password, File.read("/Users/makevoid/.password").strip
 
 
 set :user,        "www-data"
@@ -132,7 +132,7 @@ namespace :db do
     # `rake db:seeds`
     `mysqldump -u root #{application}_development > db/#{application}_development.sql`
     upload "db/#{application}_development.sql", "#{current_path}/db", :via => :scp
-    run "mysql -u root --password=#{password} #{application}_production < #{current_path}/db/#{application}_development.sql"
+    run "mkdir -d #{current_path}/db; mysql -u root --password=#{password} #{application}_production < #{current_path}/db/#{application}_development.sql"
   end
   
   desc "Get the remote copy of production db"
