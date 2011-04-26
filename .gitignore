@@ -2,3 +2,4 @@
 public/categories/*
 .pid
 .log
+.sql

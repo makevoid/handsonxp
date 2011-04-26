@@ -132,7 +132,7 @@ namespace :db do
     # `rake db:seeds`
     `mysqldump -u root #{application}_development > db/#{application}_development.sql`
     upload "db/#{application}_development.sql", "#{current_path}/db", :via => :scp
-    run "mkdir -d #{current_path}/db; mysql -u root --password=#{password} #{application}_production < #{current_path}/db/#{application}_development.sql"
+    run "mysql -u root --password=#{password} #{application}_production < #{current_path}/db/#{application}_development.sql"
   end
   
   desc "Get the remote copy of production db"
