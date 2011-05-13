@@ -23,6 +23,15 @@ GEM
     do_mysql (0.10.3)
       data_objects (= 0.10.3)
     haml (3.1.1)
+    i18n (0.5.0)
+    mail (2.3.0)
+      i18n (>= 0.4.0)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    mime-types (1.16)
+    polyglot (0.3.1)
+    pony (1.2)
+      mail (> 2.0)
     rack (1.2.2)
     rack-flash (0.1.1)
       rack
@@ -33,6 +42,8 @@ GEM
     sinatra-content-for (0.2)
       sinatra
     tilt (1.2.2)
+    treetop (1.4.9)
+      polyglot (>= 0.3.1)
 
 PLATFORMS
   ruby
@@ -42,6 +53,7 @@ DEPENDENCIES
   dm-migrations
   dm-mysql-adapter
   haml
+  pony
   rack-flash
   sass
   sinatra
