@@ -6,6 +6,9 @@ enable :sessions
 path = File.expand_path "../", __FILE__
 APP_PATH = path
 
+require 'pony'
+require "#{path}/lib/pony_gmail"
+
 class String
   def titleize
     self.gsub(/\s+/, "_").downcase
@@ -14,6 +17,14 @@ end
 
 class Handsonxp < Sinatra::Base
   require "#{APP_PATH}/config/env"
+  
+  
+  use Rack::Static, :root => "#{APP_PATH}/public"
+  
+  configure :development do # this way you can use rackup, shotgun is so slow...
+    use Rack::Reloader
+  end
+  
   
   set :haml, { :format => :html5 }
   require 'rack-flash'
@@ -33,60 +44,64 @@ class Handsonxp < Sinatra::Base
     halt 404, "404 - Page Not Found"
   end
   
-  helpers do 
-
+  helpers do
+    def user
+      @user ||= User.get(1) || User.new
+    end
   end
-
+  
   get "/" do
     haml :index
   end
   
-  get "/creations/new" do
-    haml :creations_new
+  get "/creations/index" do # aka get /creations
+    haml :"creations/index"
   end
-  
-  get "/creations/*" do |id|
-    @creation = Creation.get id
-    return not_found if @creation.nil?
-    haml :creation
-  end
-
-  get "/yes_i_am" do
-    haml :yes_i_am
-  end
-  
-  get "/what_i_do" do # aka get /creations
-    @creations = Creation.all
-    haml :what_i_do
-  end
-  
   
   get "/category/*" do |category|
     @category = category
   end
   
-  post "/creations" do
-    # raise params.inspect
-    @creation = Creation.new params[:creation]
-    @file = params[:file]
-    
-    if @creation.save
-      file = @file[:tempfile].read
-          
-File.open("#{APP_PATH}/public/creations/#{@creation.id}.png", "w") { |f| f.write file }
-    end
-    flash[:notice] = "Creation inserted!"
-    redirect "/what_i_do"
-  end
-
   get '/css/main.css' do
     sass :main
   end
   
   if ENV['RACK_ENV'] != "production"
+    get "/error" do
+      smtp = {
+        :host     => 'smtp.gmail.com',
+        :port     => '587',
+        :user     => 'm4kevoid@gmail.com',
+        :password => File.read("/Users/#{`whoami`.strip}/.password").gsub(/33/, '').strip,
+        :auth     => :plain,           # :plain, :login, :cram_md5, no auth by default
+        :domain   => "gmail.com"
+      }
+      mail = 'makevoid@gmail.com'
+      Pony.mail(:to => mail, :from => mail, :subject => 'hi', :body => 'Hello there.', smtp: smtp)
+    end
+    
+    # Pony.mail(:to=>"someeamil@example.com", 
+    #           :from => 'yourgmail@yourdomian.com', 
+    #           :subject=> "SUBJECT",
+    #           :body => "BODY",
+    #           :via => :smtp, :smtp => {
+    #             :host       => 'smtp.gmail.com',
+    #             :port       => '587',
+    #             :user       => 'yourgmail@yourdomian.com',
+    #             :password   => 'pazzword',
+    #             :auth       => :plain,
+    #             :domain     => "yourdomian.com"
+    #            }
+    #          )
+    
+    
+    
     get "/migrate" do
       DataMapper.auto_migrate!
       "migrated! <br><a href='/'>back Home</a>"
     end
   end
 end
+
+require "#{APP_PATH}/controllers/creations"
+require "#{APP_PATH}/controllers/users"

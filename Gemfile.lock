@@ -1,0 +1,61 @@
+GIT
+  remote: git@github.com:makevoid/voidtools.git
+  revision: d09587c6fafb124996242b20bc9cb651b792538c
+  specs:
+    voidtools (0.2.2)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    addressable (2.2.5)
+    data_objects (0.10.3)
+      addressable (~> 2.1)
+    dm-core (1.1.0)
+      addressable (~> 2.2.4)
+    dm-do-adapter (1.1.0)
+      data_objects (~> 0.10.2)
+      dm-core (~> 1.1.0)
+    dm-migrations (1.1.0)
+      dm-core (~> 1.1.0)
+    dm-mysql-adapter (1.1.0)
+      dm-do-adapter (~> 1.1.0)
+      do_mysql (~> 0.10.2)
+    do_mysql (0.10.3)
+      data_objects (= 0.10.3)
+    haml (3.1.1)
+    i18n (0.5.0)
+    mail (2.3.0)
+      i18n (>= 0.4.0)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    mime-types (1.16)
+    polyglot (0.3.1)
+    pony (1.2)
+      mail (> 2.0)
+    rack (1.2.2)
+    rack-flash (0.1.1)
+      rack
+    sass (3.1.1)
+    sinatra (1.2.3)
+      rack (~> 1.1)
+      tilt (< 2.0, >= 1.2.2)
+    sinatra-content-for (0.2)
+      sinatra
+    tilt (1.2.2)
+    treetop (1.4.9)
+      polyglot (>= 0.3.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  dm-core
+  dm-migrations
+  dm-mysql-adapter
+  haml
+  pony
+  rack-flash
+  sass
+  sinatra
+  sinatra-content-for
+  voidtools!

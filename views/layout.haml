@@ -19,8 +19,8 @@
           %span
             - link_to "Experience", "/"
       %nav
-        - link_to "Yes I am!", "/yes_i_am", class: "btn"    
-        - link_to "What I do!", "/what_i_do", class: "btn"
+        - link_to "Yes I am! <span>(my profile)</span>", "/users/#{user.id}", class: "btn"    
+        - link_to "Yes I do!", "/users/#{user.id}/creations", class: "btn"
       #content
         = yield
       %footer
