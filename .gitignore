@@ -3,3 +3,4 @@ public/categories/*
 .pid
 .log
 .sql
+.DS_Store
