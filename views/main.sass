@@ -113,9 +113,6 @@ input[type="file"] > input[type="button"]
   margin: 0
   padding: 0
 
-html, body 
-  height: 100%     
-  max-height: 100%
   
 img
   border: 0
@@ -141,6 +138,7 @@ $txt: #222
 $main: #999
 $alt: #666
 $links: #444
+$orange: #F70
 
 @font-face
   font-family: Adventurer
@@ -159,6 +157,7 @@ body
   font-family: sans-serif, Helvetica, Arial, Verdana
   color: $txt
   font-size: 120%
+  +gradient(#FFF, #FFEDD1)
 
 a
   color: $links
@@ -167,7 +166,11 @@ a:hover
 
 input[type='submit'], input.submit, a.button
   +button
-  +color($main)
+  +color($orange)
+  +rounded(20px)
+  color: #444
+input[type='submit']:hover, input.submit:hover, a.button:hover
+  color: #222
 
 #container
   //width: 85%
@@ -181,9 +184,11 @@ p
   
 .home h1
   text-align: center
-
+  margin: 0 auto
+  width: 410px
+  
 h1 
-  margin-bottom: 20px
+  padding-bottom: 8px
   font-size: 2.5em
   font-family: Adventurer
   text-transform: uppercase
@@ -194,20 +199,27 @@ h1
     text-transform: uppercase
     letter-spacing: 5px
     
+#logo
+  width: 120px
+  float: left
+  margin: 10px 10px 0 0
+
+h1.title
+  float: left
 header
   //+simple_gradient_half(#FFF, #F99, #F99, #FFF)
-  +gradient_tri(#FFF, #F33, #FFF, 30%, 50%, 70%)
+  +gradient_tri(#FFF, #F33, #fff, 30%, 90%, 100%)
   padding: 0 4%
   
 nav 
-  padding: 0 4%
+  padding: 5px 4%
   margin: 0 0 20px
   
 #content
+  min-height: 600px
   // -webkit-gradient(radial, posX, posY, radius, posX2, posY2, radius2, from(#fff), to(#f33))
   background: -webkit-gradient(radial, 100, 100, 200, 100, 100, 100, from(#fff), to(#f33))
   margin: 0 4%
-  height: 200px
   
 form
   p
@@ -233,16 +245,18 @@ form
 
   
 .btn
-  +color(#F93)
+  +color($orange)
   +button
   +rounded(15px)
   font-size: 0.9em
+  color: #444
+  padding: 6px 12px
+.btn:hover
+  color: #222
   
 .what_i_do img
   width: 300px
   
 .subnav
   margin: 15px 0 10px
-  
-#logo
   

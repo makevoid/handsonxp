@@ -1,5 +1,9 @@
 class Handsonxp < Sinatra::Base
   
+  get "/creations" do
+    haml :"creations/index"
+  end
+  
   get "/creations/:name" do 
     return not_found if creation.nil?
     haml :"creations/show"

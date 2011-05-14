@@ -9,6 +9,7 @@ APP_PATH = path
 require 'pony'
 require "#{path}/lib/pony_gmail"
 
+
 class String
   def titleize
     self.gsub(/\s+/, "_").downcase
@@ -19,12 +20,11 @@ class Handsonxp < Sinatra::Base
   require "#{APP_PATH}/config/env"
   
   
-  use Rack::Static, :root => "#{APP_PATH}/public"
-  
-  configure :development do # this way you can use rackup, shotgun is so slow...
+  configure :development do # this way you can use thin, shotgun is so slow...
     use Rack::Reloader
+    set :public, "public"
+    set :static, true
   end
-  
   
   set :haml, { :format => :html5 }
   require 'rack-flash'
@@ -39,6 +39,7 @@ class Handsonxp < Sinatra::Base
 
   # require models
   require "#{APP_PATH}/models/creation"
+  require "#{APP_PATH}/models/user"
 
   def not_found(object=nil)
     halt 404, "404 - Page Not Found"
@@ -47,6 +48,10 @@ class Handsonxp < Sinatra::Base
   helpers do
     def user
       @user ||= User.get(1) || User.new
+    end
+    
+    def home?
+      request.path == "/"
     end
   end
   

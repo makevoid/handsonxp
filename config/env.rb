@@ -9,7 +9,7 @@ require 'dm-mysql-adapter'
 require 'dm-migrations'
 #
 
-env = ENV["RACK_ENV"]
+env = ENV["RACK_ENV"] || "development"
 
 user = "" 
 

@@ -15,11 +15,16 @@
       %header
         %h1
           - link_to "<img src='/imgs/handsonxp_logo.png' id='logo' />", "/"
-          - link_to "Hands-on", "/"
-          %span
-            - link_to "Experience", "/"
+          .title
+            - link_to "Hands-on", "/"
+            %span
+              - link_to "Experience", "/"
+          .clear
+      -# unless home?
       %nav
-        - link_to "Yes I am! <span>(my profile)</span>", "/users/#{user.id}", class: "btn"    
+        - link_to "Creations", "/creations", class: "btn"
+        - link_to "Creators", "/users", class: "btn"
+        - link_to "Yes I am! <span>(my profile)</span>", "/users/#{user.id}", class: "btn"  
         - link_to "Yes I do!", "/users/#{user.id}/creations", class: "btn"
       #content
         = yield
