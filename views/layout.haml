@@ -24,8 +24,8 @@
       %nav
         - link_to "Creations", "/creations", class: "btn"
         - link_to "Creators", "/users", class: "btn"
-        - link_to "Yes I am! <span>(my profile)</span>", "/users/#{user.id}", class: "btn"  
-        - link_to "Yes I do!", "/users/#{user.id}/creations", class: "btn"
+        - link_to "Yes I am! <span>(my profile)</span>", "/users/#{user.nick_url}", class: "btn"  
+        - link_to "Yes I do! <span>(my creations)</span>", "/users/#{user.nick_url}/creations", class: "btn"
       #content
         = yield
       %footer

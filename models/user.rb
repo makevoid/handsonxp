@@ -3,6 +3,7 @@ class User
   
   property :id, Serial
   property :nickname, String, required: true
+  property :nick_url, String, required: true
   property :email, String, length: 100, required: true
   property :password, String, length: 100
   property :salt, String, length: 100
@@ -14,7 +15,15 @@ class User
   property :phone, String, length: 100
   property :bio, Text
   
+  has n, :creations
+  
+  
+  before :create do
+    nick_url = nick.urlize
+  end
+  
   def nick
     nickname
   end
+  
 end

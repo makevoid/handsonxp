@@ -14,6 +14,10 @@ class String
   def titleize
     self.gsub(/\s+/, "_").downcase
   end
+  
+  def urlize
+    self.strip.gsub(/\s+/, "_").downcase
+  end
 end
 
 class Handsonxp < Sinatra::Base
@@ -57,10 +61,6 @@ class Handsonxp < Sinatra::Base
   
   get "/" do
     haml :index
-  end
-  
-  get "/creations/index" do # aka get /creations
-    haml :"creations/index"
   end
   
   get "/category/*" do |category|
