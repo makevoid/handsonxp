@@ -14,8 +14,8 @@ class Creation
     "/creations/#{id}.png"
   end
 
-  before :create do
-    name_url = name.urlize
+  before :valid? do
+    self.name_url = name.urlize
   end
 
 end

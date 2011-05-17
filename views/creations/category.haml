@@ -1,7 +1,14 @@
-%h2= @category
-%h3 Category
+%h2= @category.namize
 
-%p List of creations in this category
+- creatz = creations.all(category: @category)
 
-%ul#categories
-  - partial creations.all(category: @category)
+- unless creatz == []
+  %p List of creations in this category:
+
+  %ul#categories
+    - partial creatz
+- else
+  %p.nomessage
+    There are no creations in this category... yet!
+  - link_to "Publish one!", "/creations/new", class: "btn"
+  

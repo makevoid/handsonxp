@@ -1,0 +1,8 @@
+%h2 Login to HandsOnXP
+
+%form{ action: "/login", method: "post" }
+  %label{ for: "username" } Username or Email
+  %input{ name: "username", type: "text" }
+  %label{ for: "password" } Password
+  %input{ name: "password", type: "password" }
+  %input.submit{ value: "Login", type: "submit" }

@@ -1,7 +1,7 @@
 require 'haml'
 require 'sass'
-require 'sinatra'
-enable :sessions
+require 'sinatra/base'
+require "sinatra/reloader" 
 
 path = File.expand_path "../", __FILE__
 APP_PATH = path
@@ -18,6 +18,11 @@ class String
   def urlize
     self.strip.gsub(/\s+/, "_").downcase
   end
+  
+  def namize
+    stopwords = ["and", "e"]
+    self.split("_").map{|w| stopwords.include?(w) ? w : w.capitalize }.join(" ")
+  end
 end
 
 class Handsonxp < Sinatra::Base
@@ -25,7 +30,8 @@ class Handsonxp < Sinatra::Base
   
   
   configure :development do # this way you can use thin, shotgun is so slow...
-    use Rack::Reloader
+    register Sinatra::Reloader
+    also_reload ["controllers/*.rb", "models/*.rb"]
     set :public, "public"
     set :static, true
   end
@@ -33,7 +39,7 @@ class Handsonxp < Sinatra::Base
   set :haml, { :format => :html5 }
   require 'rack-flash'
   enable :sessions
-  use Rack::Flash
+  use Rack::Flash, sweep: true
   require 'sinatra/content_for'
   helpers Sinatra::ContentFor
   set :method_override, true
@@ -51,22 +57,46 @@ class Handsonxp < Sinatra::Base
   
   helpers do
     def user
-      @user ||= User.get(1) || User.new
+      @user ||= User.get(1) 
     end
     
     def home?
       request.path == "/"
     end
+    
+    def partial_collection(model, collection)
+      collection.map do |item|
+        name = model.to_s.downcase
+        haml :"#{name.pluralize}/_#{name}", locals: { :"#{name}" => item }
+      end.join("")
+    end
+    
+    def partial(object)
+      case object.class.to_s
+      when /DataMapper.*::Collection/
+        model = object.query.model
+        partial_collection model, object
+      end
+    end
+    
+    # auth
+    
+    def logged_in?
+      cur_user
+    end
+    
+    def cur_user
+      return false unless session[:user_id]
+      @cur_user ||= User.get(session[:user_id]) 
+    end
+    
+    alias :current_user :cur_user
   end
   
   get "/" do
     haml :index
   end
-  
-  get "/category/*" do |category|
-    @category = category
-  end
-  
+    
   get '/css/main.css' do
     sass :main
   end
@@ -109,4 +139,5 @@ class Handsonxp < Sinatra::Base
 end
 
 require "#{APP_PATH}/controllers/creations"
+require "#{APP_PATH}/controllers/sessions"
 require "#{APP_PATH}/controllers/users"

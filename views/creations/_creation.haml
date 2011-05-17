@@ -1,0 +1,9 @@
+%li
+  %p 
+    - link_to creation.name, "/creations/#{creation.name_url}"
+  
+    - unless request.path =~ /users\/.+\/creations/
+      di 
+      - user = creation.user
+      - link_to user.name, "/users/#{user.nick_url}"
+    - link_to "<img src='#{creation.link}' />", url

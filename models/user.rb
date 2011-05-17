@@ -18,12 +18,35 @@ class User
   has n, :creations
   
   
-  before :create do
-    nick_url = nick.urlize
+  before :valid? do
+    self.nick_url = nick.urlize
   end
   
   def nick
     nickname
+  end
+  
+  # Auth
+  
+  require 'digest/sha2'
+  
+  before :create do
+    generate_salt
+    puts self.password
+    self.password = generate_pass self.password
+    puts self.password
+  end
+  
+  def authorized?(pass)
+    self.password == generate_pass(pass)
+  end
+  
+  def generate_pass(pass)
+    Digest::SHA2.hexdigest("#{pass}_-lol-_#{self.salt}")
+  end
+  
+  def generate_salt
+    self.salt = Digest::SHA2.hexdigest(Time.now.to_i.to_s + "lol")
   end
   
 end

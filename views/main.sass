@@ -121,7 +121,7 @@ ul
   list-style-type: none
 
 li
-  display: inline
+  display: block
 
 .clear
   clear: both
@@ -160,6 +160,7 @@ body
   +gradient(#FFF, #FFEDD1)
 
 a
+  font-weight: bold
   color: $links
 a:hover
   color: $links + #111
@@ -214,6 +215,9 @@ header
 nav 
   padding: 5px 4%
   margin: 0 0 20px
+  li
+    display: inline
+
   
 #content
   min-height: 600px
@@ -252,7 +256,6 @@ form
   color: #444
   padding: 6px 12px
   span
-    display: block
     font-size: 0.7em
 .btn:hover
   color: #222
@@ -263,3 +266,29 @@ form
 .subnav
   margin: 15px 0 10px
   
+
+.right
+  float: right
+  
+h2
+  margin-bottom: 12px
+
+h3 
+  margin: 10px 0 6px
+  
+p.nomessage
+  padding-bottom: 10px
+  
+#flash
+  margin-bottom: 12px
+  float: left
+  div
+    border: 1px solid #666
+    padding: 5px 10px
+    +rounded(15px)
+  .notice
+    color: #0D7
+    border: 1px solid #0D7
+  .error
+    color: #D00
+    border: 1px solid #D00

@@ -1,0 +1,27 @@
+
+%p Requireds
+
+%label Nickname                         
+%input{ type: "text", name: "user[nickname]", value: user.nickname }
+%label Email                         
+%input{ type: "text", name: "user[email]", value: user.email }
+%label Password                         
+%input{ type: "password", name: "user[password]", value: user.password }
+
+%p Optionals
+
+%label Name and Surname                         
+%input{ type: "text", name: "user[name]", value: user.name }
+%label Address
+%input{ type: "text", name: "user[address]", value: user.address }
+%label Zipcode (CAP)
+%input{ type: "text", name: "user[zip]", value: user.zip }
+%label City/State/Province
+%input{ type: "text", name: "user[city]", value: user.city }
+%label Country
+%input{ type: "text", name: "user[country]", value: user.country }
+%label Phone
+%input{ type: "text", name: "user[phone]", value: user.phone }  
+%label Bio                         
+%textarea{ name: "user[bio]" }
+  = user.bio

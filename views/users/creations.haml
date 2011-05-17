@@ -4,12 +4,9 @@
   - unless @creations == []
     %li 
       - link_to "New creation", "/creations/new", class: "btn"
-    - @creations.each do |creation|
-      %li 
-        - url = "/creations/#{creation.id}"
-        %p  
-          - link_to creation.name, url
-        - link_to "<img src='#{creation.link}' />", url
+    = partial @creations
+    
+    
   - else
     %li.no_creations 
       You haven't uploaded what you do!

@@ -4,23 +4,30 @@ class Handsonxp < Sinatra::Base
     haml :"users/index"
   end
   
-  get "/users/:name" do
-    haml :"users/show"
-  end
-  
   get "/users/new" do
     haml :"users/new"
   end
   
+  get "/users/:nick_url/edit" do
+    haml :"users/edit"
+  end
+  
+  get "/users/:nick_url" do
+    haml :"users/show"
+  end
+  
+  
   post "/users" do
     if user.save
+      flash[:notice] = "You have registered successfully!"
       redirect "/users"
     else
+      flash[:error] = "Error in the registration process"
       haml :"users/new"
     end
   end
   
-  put "/users/:nick" do
+  put "/users/:nick_url" do
     if user.update(params[:user])
       redirect "/users/#{params[user_p]}"
     else
@@ -28,14 +35,15 @@ class Handsonxp < Sinatra::Base
     end
   end
   
-  delete "/users/:nick" do
+  delete "/users/:nick_url" do
     user.destroy
     flash[:notice] = "User deleted"
     redirect "/users"
   end
   
-  get "/users/:nick/creations" do
+  get "/users/:nick_url/creations" do
     @creations = user.creations
+    haml :"users/creations"
   end
   
   helpers do 
@@ -44,7 +52,7 @@ class Handsonxp < Sinatra::Base
     end
     
     def user_p
-      :nickname
+      :nick_url
     end
     
     def user

@@ -1,12 +1,15 @@
 require 'bundler'
 require 'bundler/setup'
 
-set :haml, { :format => :html5 }
+
 
 
 require 'dm-core'
 require 'dm-mysql-adapter'
 require 'dm-migrations'
+require 'dm-validations'
+
+require 'extlib'
 #
 
 env = ENV["RACK_ENV"] || "development"

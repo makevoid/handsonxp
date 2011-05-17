@@ -6,14 +6,20 @@ class Handsonxp < Sinatra::Base
     haml :"creations/index"
   end
   
-  get "/creations/:name_url" do 
-    return not_found if creation.nil?
-    haml :"creations/show"
+  get "/creations/:category/category" do
+    @category = params[:category]
+    haml :"creations/category"
   end
   
   get "/creations/new" do
     haml :"creations/new"
   end
+  
+  get "/creations/:name_url" do 
+    return not_found if creation.nil?
+    haml :"creations/show"
+  end
+  
   
   post "/creations" do
     @file = params[:file]

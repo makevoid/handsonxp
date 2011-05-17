@@ -1,0 +1,8 @@
+%h2 Edit your profile
+
+%form{ action: "/users/#{user.nick_url}", method: "post" }
+  %input{ type: "hidden", name: "_method", value: "put" }
+  = haml :"users/_form"
+  %input{ type: "submit", value: "Update" }
+
+  

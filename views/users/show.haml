@@ -1,30 +1,19 @@
 %h2 Yes I Am!
 
-%form{ action: "/i_am" }
-  %p Requireds
-  
-  %label Nickname                         
-  %input{ type: "text", name: "nick" }
-  %label Email                         
-  %input{ type: "text", name: "email" }
-  %label Password                         
-  %input{ type: "password", name: "email" }
-  
-  %p Optionals
-  
-  %label Name and Surname                         
-  %input{ type: "text", name: "name" }
-  %label Address
-  %input{ type: "text", name: "address" }
-  %label Zipcode (CAP)
-  %input{ type: "text", name: "zip" }
-  %label City/State/Province
-  %input{ type: "text", name: "city" }
-  %label Country
-  %input{ type: "text", name: "country" }
-  %label Phone
-  %input{ type: "text", name: "phone" }  
-  %label Bio                         
-  %textarea{ name: "bio" }
+- if cur_user == user
+  - link_to "Edit profile", "/users/#{user.nick_url}/edit", class: "btn"
 
-  %input{ type: "submit", value: "Create" }
+#user
+  %h3= user.nick
+  %p 
+    %span Name:
+    = user.name
+  %p 
+    %span Address:
+    = user.address
+    = user.zip
+    = user.city
+    = user.country
+  %p 
+    %span Bio:
+    = user.bio
