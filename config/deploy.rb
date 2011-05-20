@@ -130,16 +130,19 @@ namespace :db do
   desc "Send the local db to production server"
   task :toprod do
     # `rake db:seeds`
+    `mkdir -p db`
     `mysqldump -u root #{application}_development > db/#{application}_development.sql`
-    upload "db/#{application}_development.sql", "#{current_path}/db", :via => :scp
+    run "mkdir -p #{current_path}/db"
+    upload "db/#{application}_development.sql", "#{current_path}/db/#{application}_development.sql", :via => :scp
     run "mysql -u root --password=#{password} #{application}_production < #{current_path}/db/#{application}_development.sql"
   end
   
   desc "Get the remote copy of production db"
   task :todev do
-    run "mysqldump -u root --password=#{password} #{application}_production > #{current_path}/db/#{application}_production.sql"
+    run "mkdir -p #{current_path}/db; mysqldump -u root --password=#{password} #{application}_production > #{current_path}/db/#{application}_production.sql"
     download "#{current_path}/db/#{application}_production.sql", "db/#{application}_production.sql"
     local_path = `pwd`.strip
+    `mkdir -p db`
     `mysql -u root #{application}_development < #{local_path}/db/#{application}_production.sql`
   end
 end

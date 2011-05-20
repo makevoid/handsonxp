@@ -23,15 +23,19 @@ class Handsonxp < Sinatra::Base
   
   post "/creations" do
     @file = params[:file]
+    @creation = cur_user.creations.new(params[:creation])
     
-    if creation.save
+    if @creation.save
       file = @file[:tempfile].read
           
       path = "#{APP_PATH}/public/creations/#{creation.id}.png"
       File.open(path, "w") { |f| f.write file }
+      flash[:notice] = "Creation inserted!"
+      redirect "/users/#{cur_user.nick_url}/creations"
+    else
+      flash[:error] = "Error saving the creation"
+      haml :"creations/new"
     end
-    flash[:notice] = "Creation inserted!"
-    redirect "/what_i_do"
   end
   
   put "/creations/:name_url" do
@@ -42,8 +46,10 @@ class Handsonxp < Sinatra::Base
     end
   end
   
-  delete "/users/:nick/creations/:name_url" do
-    redirect "/creations/#{creation_p}"
+  delete "/creations/:name_url" do
+    creation.destroy
+    flash[:notice] = "Creation deleted!"
+    redirect "/users/#{cur_user.nick_url}/creations"
   end
   
   helpers do  

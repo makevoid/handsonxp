@@ -1,9 +1,11 @@
-%h2 What I do!
+%h2 What I do:
+
+
+%p.info
+  - link_to "Add creation", "/creations/new", class: "btn"
 
 %ul#what_i_do
   - unless @creations == []
-    %li 
-      - link_to "New creation", "/creations/new", class: "btn"
     = partial @creations
     
     

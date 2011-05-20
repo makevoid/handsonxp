@@ -157,7 +157,7 @@ body
   font-family: sans-serif, Helvetica, Arial, Verdana
   color: $txt
   font-size: 120%
-  +gradient(#FFF, #FFEDD1)
+  +gradient(#FFF, #FFF1AB)
 
 a
   font-weight: bold
@@ -222,7 +222,7 @@ nav
 #content
   min-height: 600px
   // -webkit-gradient(radial, posX, posY, radius, posX2, posY2, radius2, from(#fff), to(#f33))
-  background: -webkit-gradient(radial, 100, 100, 200, 100, 100, 100, from(#fff), to(#f33))
+  // background: -webkit-gradient(radial, 100, 100, 200, 100, 100, 100, from(#fff), to(#f33))
   margin: 0 4%
   
 form
@@ -292,3 +292,25 @@ p.nomessage
   .error
     color: #D00
     border: 1px solid #D00
+    
+    
+#lefty
+  width: 65%
+  float: left
+  
+#righty
+  width: 35%
+  float: left
+    
+#creations, #what_i_do
+  img
+    display: block
+    
+.home #lefty
+  img
+    width: 200px
+    
+p.info
+  margin-bottom: 10px
+p.reg
+  margin-top: 10px

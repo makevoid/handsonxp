@@ -1,7 +1,16 @@
-
 %h2= @creation.name
 
-.subnav
-  - link_to "back", "/what_i_do", class: "btn"
+%h3
+  di 
+  - user = creation.user
+  - link_to user.name, "/users/#{user.nick_url}"
 
+.subnav
+  - link_to "back", "/users/#{user.nick_url}/creations", class: "btn"
+  .right
+    - link_to "delete", "/creations/#{creation.name_url}", class: "btn", method: "delete"
+  
 - image_tag @creation.link
+
+%p.desc
+  = creation.description

@@ -1,7 +1,7 @@
-%h2 What I do!
+%h2 New Creation:
 
-%ul#what_i_do
-  
+- error_messages_for creation
 
 %form{ action: "/creations", method: "post", enctype: "multipart/form-data" }       
-  - partial :"_form"
+  = partial :"creations/_form"
+  %input{ type: "submit", value: "Create" }

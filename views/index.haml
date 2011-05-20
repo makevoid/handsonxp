@@ -1,8 +1,20 @@
-%section
-  .categories
-    %h3 Categories
-    %ul#categories
-      - categories = ["Arts and Crafts", "Multimedia", "Pictures and Photos", "Computer Land", "Green Economy", "Blue Economy", "Other"]
-      - categories.each do |category|
-        %li
-          - link_to category, "/creations/#{category.titleize}/category"
+#lefty
+  %h2 Le ultime creazioni pubblicate:
+  %ul#creations
+    = partial creations
+
+#righty
+  %h3 Ti consideri originale?
+  %h3 Ti senti creativo/a?
+  %h3 Cosa sai fare realmente?
+
+  %p Con l'obiettivo di accrescere la consapevolezza dell'importanza della creativita' e della innovazione, quali componenti essenziali per lo sviluppo personale, sociale, e perche no: economico!
+
+  %p SIAMO' CONVINTI CHE SU QUESTO PIANETA ESISTONO PERSONE CAPACI, CREATIVE ED INTELLIGENTI, CHE SANNO GUARDARE DOVE ALTRI NON VEDONO.
+
+  %p Iscriviti subito ad Hands-On Experience e pubblica i tuoi lavori, così potrai farti conoscere in tutto il mondo!
+
+  %p.reg
+    - link_to "Registrati!", "/users/new", class: "btn"
+
+  

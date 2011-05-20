@@ -55,6 +55,11 @@ class Handsonxp < Sinatra::Base
     halt 404, "404 - Page Not Found"
   end
   
+  CATEGORIES = ["Arts and Crafts", "Multimedia", "Pictures and Photos", "Computer Land", "Green Economy", "Blue Economy", "Other"]
+  
+  require 'voidtools/dm/form_helpers'
+  helpers Voidtools::FormHelpers
+  
   helpers do
     def user
       @user ||= User.get(1) 
@@ -76,6 +81,8 @@ class Handsonxp < Sinatra::Base
       when /DataMapper.*::Collection/
         model = object.query.model
         partial_collection model, object
+      when /Symbol|String/
+        haml object
       end
     end
     
@@ -95,6 +102,10 @@ class Handsonxp < Sinatra::Base
   
   get "/" do
     haml :index
+  end
+  
+  get "/contacts" do
+    haml :contacts
   end
     
   get '/css/main.css' do
