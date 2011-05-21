@@ -37,6 +37,10 @@ class User
     puts self.password
   end
   
+  def admin?
+    self.id == 2# || self.id == # makevoid & pio
+  end
+  
   def authorized?(pass)
     self.password == generate_pass(pass)
   end

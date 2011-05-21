@@ -61,6 +61,10 @@ class Handsonxp < Sinatra::Base
   helpers Voidtools::FormHelpers
   
   helpers do
+    def admin?
+      cur_user.admin?
+    end
+    
     def user
       @user ||= User.get(1) 
     end
