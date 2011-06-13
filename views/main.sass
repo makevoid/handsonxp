@@ -11,8 +11,8 @@
 
 @mixin gradient($top, $bottom)
   background-color: $bottom
-  background: -webkit-gradient(linear, left top, left bottom, from($top), to($bottom))
-  background: -moz-linear-gradient(top, $top,  $bottom)
+  background: -webkit-gradient(linear, left top, left bottom, from($top), to($bottom)) no-repeat
+  background: -moz-linear-gradient(top, $top,  $bottom) no-repeat
   filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$top}', endColorstr='#{$bottom}')
 
 @mixin button
@@ -125,6 +125,12 @@ li
 
 .clear
   clear: both
+  
+.clearleft
+  clear: left
+  
+.clearright
+  clear: right
 
 a 
   text-decoration: none
@@ -139,6 +145,7 @@ $main: #999
 $alt: #666
 $links: #444
 $orange: #F70
+$lorange: #FFCA6B
 
 @font-face
   font-family: Adventurer
@@ -153,11 +160,12 @@ $orange: #F70
   src: url('/fonts/copperplate_gothic_bold.ttf') /* otf is better */
   
 body
-  background: $bg
   font-family: sans-serif, Helvetica, Arial, Verdana
   color: $txt
-  font-size: 120%
-  +gradient(#FFF, #FFF1AB)
+  font-size: 130%
+  background: $lorange
+  height: 100%
+  
 
 a
   font-weight: bold
@@ -175,8 +183,10 @@ input[type='submit']:hover, input.submit:hover, a.button:hover
 
 #container
   //width: 85%
+  min-width: 850px
   margin: 0 auto 40px 
   padding-top: 10px
+  +gradient(#FFF, $lorange)
 .home #container
   padding-top: 30px
   
@@ -190,7 +200,7 @@ p
   
 h1 
   padding-bottom: 8px
-  font-size: 2.5em
+  font-size: 2.2em
   font-family: Adventurer
   text-transform: uppercase
   span
@@ -209,7 +219,7 @@ h1.title
   float: left
 header
   //+simple_gradient_half(#FFF, #F99, #F99, #FFF)
-  +gradient_tri(#FFF, #F33, #fff, 30%, 90%, 100%)
+  +gradient_tri(#FFF, #F33, #fff, 20%, 50%, 80%)
   padding: 0 4%
   
 nav 
@@ -220,7 +230,7 @@ nav
 
   
 #content
-  min-height: 600px
+  min-height: 400px
   // -webkit-gradient(radial, posX, posY, radius, posX2, posY2, radius2, from(#fff), to(#f33))
   // background: -webkit-gradient(radial, 100, 100, 200, 100, 100, 100, from(#fff), to(#f33))
   margin: 0 4%
@@ -239,9 +249,11 @@ form
     padding: 3px 6px
   input[type='submit']
     margin: 20px 0 0 0
+  textarea
+    height: 200px
     
 .categories
-  padding-top: 30px
+  //  padding-top: 30px
   
 #categories
   li
@@ -271,14 +283,36 @@ form
   float: right
   
 h2
-  margin-bottom: 12px
+  margin-bottom: 10px
+  font-size: 1.6em
+  color: $orange
+  text-shadow: 2px 1px 1px #222
+  span
+    font-size: 0.8em
 
 h3 
   margin: 10px 0 6px
+  font-size: 1.3em
+  color: $orange
+  text-shadow: 2px 1px 1px #222
+
+h2, h3, h4, h5
+  a 
+    color: $orange - #222
+  
   
 p.nomessage
   padding-bottom: 10px
   
+
+.box  
+  +gradient($lorange, #FF9145)
+  padding: 5px 15px
+  +rounded(15px)
+
+.box #categories
+  margin: 10px 0
+
 #flash
   margin-bottom: 12px
   float: left
@@ -295,22 +329,36 @@ p.nomessage
     
     
 #lefty
-  width: 65%
+  width: 55%
   float: left
   
 #righty
-  width: 35%
+  width: 45%
   float: left
     
 #creations, #what_i_do
   li
-    margin: 8px 0
-  img
+    +gradient($lorange, #FF9145)
+    padding: 20px
+    margin: 10px 0
     display: block
+    float: left
+    clear: left
+    +rounded(15px)
+    border: 1px solid #FFE700
+    p.title
+      margin-bottom: 10px
+      .name
+        font-size: 1.3em
+        font-weight: bold
+  img
+    margin: 0 auto
+    display: block
+    max-width: 400px
     
 .home #lefty
   img
-    width: 200px
+    width: 320px
     
 p.info
   margin-bottom: 10px
@@ -326,3 +374,33 @@ p.important
 .align_right
   text-align: right
   
+  
+#users li
+  margin: 10px 0 
+  
+
+hr
+  height: 4px
+  border: 0
+  color: $orange
+  background: $orange
+  margin: 30px 50px
+  
+.sizeup
+  font-size: 1.2em
+  
+#user .box
+  float: left
+  padding-bottom: 10px
+  span
+    font-weight: bold
+  h3
+    font-size: 1.2em
+    
+img.main_img
+  margin-top: 20px
+  max-width: 750px
+  border-radius: 30px
+  
+.editprof
+  margin-bottom: 10px

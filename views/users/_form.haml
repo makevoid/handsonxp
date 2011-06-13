@@ -1,27 +1,30 @@
 
-%p Requireds
+%p Obbligatori
 
-%label Nickname                         
+%label Nome Utente                         
 %input{ type: "text", name: "user[nickname]", value: user.nickname }
 %label Email                         
 %input{ type: "text", name: "user[email]", value: user.email }
 %label Password                         
 %input{ type: "password", name: "user[password]", value: user.password }
 
-%p Optionals
+- if request.path.split("/")[1..2]
+  %input{ type: "submit", value: "Registrati" } 
 
-%label Name and Surname                         
+%p Facoltativi
+
+%label Nome e Cognome                      
 %input{ type: "text", name: "user[name]", value: user.name }
-%label Address
+%label Indirizzo
 %input{ type: "text", name: "user[address]", value: user.address }
-%label Zipcode (CAP)
+%label CAP
 %input{ type: "text", name: "user[zip]", value: user.zip }
-%label City/State/Province
+%label Comune
 %input{ type: "text", name: "user[city]", value: user.city }
-%label Country
+%label Città
 %input{ type: "text", name: "user[country]", value: user.country }
-%label Phone
+%label Telefono
 %input{ type: "text", name: "user[phone]", value: user.phone }  
-%label Bio                         
+%label Biografia                    
 %textarea{ name: "user[bio]" }
   = user.bio

@@ -1,19 +1,25 @@
-%h2 Yes I Am!
+%h2= user.nick
 
 - if cur_user == user
-  - link_to "Edit profile", "/users/#{user.nick_url}/edit", class: "btn"
+  - link_to "Modifica il tuo profilo", "/users/#{user.nick_url}/edit", class: "btn editprof"
 
 #user
-  %h3= user.nick
-  %p 
-    %span Name:
-    = user.name
-  %p 
-    %span Address:
-    = user.address
-    = user.zip
-    = user.city
-    = user.country
-  %p 
-    %span Bio:
-    = user.bio
+  .box
+    %h3= user.name    
+    .sizeup
+      - unless user.address.blank? ||  user.zip.blank? ||  user.city.blank? ||  user.country.blank?
+        %p 
+          %span Indirizzo:
+          = user.address
+          = user.zip
+          = user.city
+          = user.country
+      - unless user.bio.blank?
+        %p 
+          %span Bio:
+          = user.bio.gsub(/http:\/\/(.+)/, '<a href=\'http://\1\'>\1</a>')
+  .clear
+      
+%h3 Lavori:
+= partial :"users/_creations"
+      

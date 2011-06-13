@@ -13,6 +13,7 @@ class Handsonxp < Sinatra::Base
   end
   
   get "/users/:nick_url" do
+    @creations = user.creations
     haml :"users/show"
   end
   

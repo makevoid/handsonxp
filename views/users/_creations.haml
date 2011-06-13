@@ -1,0 +1,9 @@
+%ul#what_i_do
+  - unless @creations == []
+    = partial @creations
+    
+    
+  - else
+    %li.no_creations 
+      Non hai ancora aggiunto un lavoro
+      - link_to "Inizia ora!", "/creations/new", class: "btn"

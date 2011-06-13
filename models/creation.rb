@@ -9,6 +9,8 @@ class Creation
   property :description, Text
   
   belongs_to :user
+
+  default_scope(:default).update( order: [:id.desc] )
   
   def link
     "/creations/#{id}.png"

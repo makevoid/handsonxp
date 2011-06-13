@@ -1,16 +1,18 @@
-%h2= @creation.name
-
-%h3
-  di 
-  - user = creation.user
-  - link_to user.name, "/users/#{user.nick_url}"
+%h2
+  = @creation.name
+  %span
+    \-
+    - user = creation.user
+    - link_to user.nick, "/users/#{user.nick_url}"
+  
 
 .subnav
-  - link_to "back", "/users/#{user.nick_url}/creations", class: "btn"
-  .right
-    - link_to "delete", "/creations/#{creation.name_url}", class: "btn", method: "delete"
+  - link_to "indietro", "/users/#{user.nick_url}/creations", class: "btn"
+  - if logged_in? && user.creations.include?(creation)
+    .right
+      - link_to "cancella", "/creations/#{creation.name_url}", class: "btn", method: "delete"
   
-- image_tag @creation.link
+- image_tag @creation.link, class: "main_img"
 
 %p.desc
   = creation.description

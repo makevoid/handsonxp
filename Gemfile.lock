@@ -1,15 +1,15 @@
 GIT
   remote: git://github.com/makevoid/voidtools
-  revision: d09587c6fafb124996242b20bc9cb651b792538c
+  revision: 2e6d24a7c37e383fbd8b055fc71148aeb238ad06
   specs:
-    voidtools (0.2.2)
+    voidtools (0.2.3)
 
 GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.2.6)
     backports (2.2.1)
-    data_objects (0.10.5)
+    data_objects (0.10.6)
       addressable (~> 2.1)
     dm-core (1.1.0)
       addressable (~> 2.2.4)
@@ -23,11 +23,11 @@ GEM
       do_mysql (~> 0.10.2)
     dm-validations (1.1.0)
       dm-core (~> 1.1.0)
-    do_mysql (0.10.5)
-      data_objects (= 0.10.5)
+    do_mysql (0.10.6)
+      data_objects (= 0.10.6)
     extlib (0.9.15)
-    haml (3.1.1)
-    i18n (0.5.0)
+    haml (3.1.2)
+    i18n (0.6.0)
     mail (2.3.0)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -38,10 +38,10 @@ GEM
     polyglot (0.3.1)
     pony (1.2)
       mail (> 2.0)
-    rack (1.2.2)
+    rack (1.3.0)
     rack-flash (0.1.1)
       rack
-    sass (3.1.1)
+    sass (3.1.2)
     sinatra (1.2.6)
       rack (~> 1.1)
       tilt (< 2.0, >= 1.2.2)
@@ -57,7 +57,7 @@ GEM
     sinatra-sugar (0.5.1)
       monkey-lib (~> 0.5.0)
       sinatra (~> 1.0)
-    tilt (1.3)
+    tilt (1.3.2)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
 

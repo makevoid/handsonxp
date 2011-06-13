@@ -3,12 +3,12 @@
 - creatz = creations.all(category: @category)
 
 - unless creatz == []
-  %p List of creations in this category:
+  %p Lista dei tuoi lavori:
 
   %ul#categories
     - partial creatz
 - else
   %p.nomessage
-    There are no creations in this category... yet!
-  - link_to "Publish one!", "/creations/new", class: "btn"
+    Non ci sono lavori in questa categoria
+  - link_to "Inseriscine uno!", "/creations/new", class: "btn"
   

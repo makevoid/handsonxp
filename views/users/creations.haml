@@ -1,15 +1,7 @@
-%h2 What I do:
+%h2 I miei lavori:
 
 
 %p.info
-  - link_to "Add creation", "/creations/new", class: "btn"
+  - link_to "Aggiungi un lavoro", "/creations/new", class: "btn"
 
-%ul#what_i_do
-  - unless @creations == []
-    = partial @creations
-    
-    
-  - else
-    %li.no_creations 
-      You haven't uploaded what you do!
-      - link_to "Start now", "/creations/new", class: "btn"
+= partial :"users/_creations"

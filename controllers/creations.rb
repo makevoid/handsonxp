@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class Handsonxp < Sinatra::Base
-  
+    
   get "/creations" do
     haml :"creations/index"
   end

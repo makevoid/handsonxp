@@ -29,7 +29,7 @@ class Handsonxp < Sinatra::Base
   require "#{APP_PATH}/config/env"
   
   
-  configure :development do # this way you can use thin, shotgun is so slow...
+  configure :development do
     register Sinatra::Reloader
     also_reload ["controllers/*.rb", "models/*.rb"]
     set :public, "public"
@@ -55,7 +55,7 @@ class Handsonxp < Sinatra::Base
     halt 404, "404 - Page Not Found"
   end
   
-  CATEGORIES = ["Arts and Crafts", "Multimedia", "Pictures and Photos", "Computer Land", "Green Economy", "Blue Economy", "Other"]
+  CATEGORIES = ["Arti e Mestieri", "Multimedia", "Disegno e pittura", "Fotografia", "Computer Land", "Green Economy", "Blue Economy", "Altro"]
   
   require 'voidtools/dm/form_helpers'
   helpers Voidtools::FormHelpers

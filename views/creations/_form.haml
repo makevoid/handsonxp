@@ -1,15 +1,15 @@
 
 
-%label Name                         
+%label Nome                         
 %input{ type: "text", name: "creation[name]", value: creation.name }
 %label File                         
 %input{ type: "file", name: "file" }
-%label Category                   
+%label Categoria                   
 %select{ name: "creation[category]" }
   - CATEGORIES.each do |cat|
     - sel = {}
     - sel = {selected: "selected"} if cat == creation.category
     %option{ sel }= cat
-%label Description                         
+%label Descrizione:                         
 %textarea{ name: "creation[description]" }
   = creation.name

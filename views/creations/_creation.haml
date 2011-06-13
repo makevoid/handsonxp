@@ -1,9 +1,9 @@
 %li
-  %p 
-    - link_to creation.name, "/creations/#{creation.name_url}"
+  %p.title
+    - link_to creation.name, "/creations/#{creation.name_url}", class: "name"
   
     - unless request.path =~ /users\/.+\/creations/
-      di 
+      \- 
       - user = creation.user
-      - link_to user.name, "/users/#{user.nick_url}"
-    - link_to "<img src='#{creation.link}' />", "/creations/#{creation.name_url}"
+      - link_to user.nick, "/users/#{user.nick_url}", class: "nick"
+  - link_to "<img src='#{creation.link}' />", "/creations/#{creation.name_url}"

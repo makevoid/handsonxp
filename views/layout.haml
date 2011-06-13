@@ -1,13 +1,13 @@
 !!! Strict
 %html{ html_attrs("en_EN") }
   %head
-    %title Hands-on Experience
+    %title Hands-on Experience - Pubblica i tuoi lavori!
     %link{ href: "/css/main.css", rel: "stylesheet" }
     %meta{ charset: "utf-8" }
     %meta{ :"http-equiv" => "X-UA-Compatible", content: "IE=edge,chrome=1" }
-    %meta{ name: "description", content: "" }
-    %meta{ name: "keywords", content: "" }    
-    %meta{ name: "author", content: "" }    
+    %meta{ name: "description", content: "Iscriviti subito ad hands-on experience e pubblica i tuoi lavori! Potrai farti conoscere in tutto il mondo!" }
+    %meta{ name: "keywords", content: "hands on experience, hands-on, experience, lavori, pubblica" }    
+    %meta{ name: "author", content: "Francesco 'makevoid' Canessa, Pio Porcinai" }    
     -# %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     %script{ src: "/js/modernizr.js", type: "text/javascript" }
     - if ENV["RACK_ENV"] == "production"
@@ -26,11 +26,11 @@
       %header
         #login.right
           - if logged_in?
-            - link_to "Yes I am! <span>(profile)</span>", "/users/#{cur_user.nick_url}", class: "btn"
+            - link_to "Profilo", "/users/#{cur_user.nick_url}", class: "btn"
             - link_to "Logout", "/logout", class: "btn"
           - else
-            - link_to "Login", "/login", class: "btn"
-            - link_to "Register", "/users/new", class: "btn"
+            - link_to "Accedi", "/login", class: "btn"
+            - link_to "Registrati", "/users/new", class: "btn"
         %h1
           - link_to "<img src='/imgs/handsonxp_logo.png' id='logo' />", "/"
           .title
@@ -40,11 +40,10 @@
           .clear
       -# unless home?
       %nav
-        - link_to "Creations", "/creations", class: "btn"
-        - link_to "Creators", "/users", class: "btn"
+        - link_to "Lavori", "/creations", class: "btn"
+        - link_to "Artisti", "/users", class: "btn"
         - if logged_in?
-          - link_to "Yes I am! <span>(profile)</span>", "/users/#{cur_user.nick_url}", class: "btn"  
-          - link_to "Yes I do! <span>(creations)</span>", "/users/#{cur_user.nick_url}/creations", class: "btn"
+          - link_to "I miei lavori", "/users/#{cur_user.nick_url}/creations", class: "btn"
       #content
         #flash
           - [:notice, :error, :alert].each do |name|
@@ -52,6 +51,7 @@
               %div{ class: name }= flash[name]
         .clear
         = yield
+      .clear
       %footer
     %script{ src: "/js/jquery.js", type: "text/javascript" }
     %script{ src: "/js/main.js", type: "text/javascript" }
