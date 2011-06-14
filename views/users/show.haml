@@ -1,4 +1,4 @@
-%h2= user.nick
+%h2= user.nick.capitalize
 
 - if cur_user == user
   - link_to "Modifica il tuo profilo", "/users/#{user.nick_url}/edit", class: "btn editprof"

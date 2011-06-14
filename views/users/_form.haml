@@ -8,8 +8,7 @@
 %label Password                         
 %input{ type: "password", name: "user[password]", value: user.password }
 
-- if request.path.split("/")[1..2]
-  %input{ type: "submit", value: "Registrati" } 
+%input{ type: "submit", value: request.path.split("/")[2..3] == "edit" ? "Registrati" : "Modifica" } 
 
 %p Facoltativi
 

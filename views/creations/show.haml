@@ -1,5 +1,5 @@
 %h2
-  = @creation.name
+  = @creation.name.capitalize
   %span
     \-
     - user = creation.user
@@ -12,7 +12,17 @@
     .right
       - link_to "cancella", "/creations/#{creation.name_url}", class: "btn", method: "delete"
   
-- image_tag @creation.link, class: "main_img"
 
-%p.desc
-  = creation.description
+%a{ href: @creation.link, class: "main_img" }
+  - image_tag( @creation.link, class: "main_img")
+
+.desc.cat
+  %p.head Categoria:
+  %p= creation.category
+
+
+- unless creation.description.blank?
+  .desc
+    %p.head Descrizione:
+    %p
+      = creation.description

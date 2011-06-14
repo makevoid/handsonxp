@@ -1,9 +1,11 @@
 %li
   %p.title
-    - link_to creation.name, "/creations/#{creation.name_url}", class: "name"
-  
+    - link_to creation.name.capitalizeall, "/creations/#{creation.name_url}", class: "name"
+    
+    
+    %span.cat [#{creation.category}]
     - unless request.path =~ /users\/.+\/creations/
-      \- 
+      \-
       - user = creation.user
-      - link_to user.nick, "/users/#{user.nick_url}", class: "nick"
+      - link_to user.nick.capitalize, "/users/#{user.nick_url}", class: "nick"
   - link_to "<img src='#{creation.link}' />", "/creations/#{creation.name_url}"

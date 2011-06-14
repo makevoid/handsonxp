@@ -1,4 +1,4 @@
 %li
-  - link_to "#{user.nick}#{" (#{user.name})" unless user.name.blank?}", "/users/#{user.nick_url}"
+  - link_to "#{user.nick.capitalize}#{" (#{user.name})" unless user.name.blank?}", "/users/#{user.nick_url}"
   - count = user.creations.count
   (#{count} creation#{"s" if count != 1})

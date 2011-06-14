@@ -11,6 +11,10 @@ require "#{path}/lib/pony_gmail"
 
 
 class String
+  def capitalizeall
+    self.split(" ").map{ |w| w.capitalize }.join(" ")
+  end
+  
   def titleize
     self.gsub(/\s+/, "_").downcase
   end
@@ -55,7 +59,7 @@ class Handsonxp < Sinatra::Base
     halt 404, "404 - Page Not Found"
   end
   
-  CATEGORIES = ["Arti e Mestieri", "Multimedia", "Disegno e pittura", "Fotografia", "Computer Land", "Green Economy", "Blue Economy", "Altro"]
+  CATEGORIES = ["Arte e Artigianato", "Multimedia", "Disegno e pittura", "Fotografia", "Computer Land", "Green Economy", "Blue Economy", "Altro"]
   
   require 'voidtools/dm/form_helpers'
   helpers Voidtools::FormHelpers

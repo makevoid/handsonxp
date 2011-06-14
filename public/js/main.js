@@ -7,4 +7,6 @@ $(function(){
             .submit()
     return false
   })
+  
+  $(".creations a.main_img").fancybox({overlayShow: true, transitionIn: 'elastic', transitionOut: 'fade', hideOnContentClick: true, showCloseButton: false, titleShow: false, padding: 16, changeSpeed: 800})
 })

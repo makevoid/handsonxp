@@ -1,12 +1,10 @@
 %h2= @category.namize
 
-- creatz = creations.all(category: @category)
+- creatz = creations.all(category: @category.namize)
 
 - unless creatz == []
-  %p Lista dei tuoi lavori:
-
-  %ul#categories
-    - partial creatz
+  %ul#creations
+    = partial creatz
 - else
   %p.nomessage
     Non ci sono lavori in questa categoria
