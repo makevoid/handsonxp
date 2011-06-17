@@ -8,17 +8,17 @@ class Handsonxp < Sinatra::Base
     if user && user.authorized?(params[:password])
       @cur_user = user
       session[:user_id] = user.id
-      flash[:notice] = "Logged in successfully!"
+      flash[:notice] = "Hai effettuato l'accesso!"
       redirect "/"
     else
-      flash[:error] = "Can't login with this username and password!"
+      flash[:error] = "Username e/o password errati!"
       haml :"login"
     end
   end
   
   get "/logout" do
     session[:user_id] = nil
-    flash[:notice] = "Logged out successfully!"
+    flash[:notice] = "Logout effettuato!"
     redirect "/"
   end
 end

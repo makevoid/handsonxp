@@ -17,6 +17,7 @@ class User
   
   has n, :creations
   
+  default_scope(:default).update( order: [:id.desc] )
   
   before :valid? do
     self.nick_url = nick.urlize

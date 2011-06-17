@@ -13,6 +13,7 @@ class Handsonxp < Sinatra::Base
   end
   
   get "/users/:nick_url" do
+    return not_found if user.nil?
     @creations = user.creations
     haml :"users/show"
   end
@@ -20,10 +21,12 @@ class Handsonxp < Sinatra::Base
   
   post "/users" do
     if user.save
-      flash[:notice] = "You have registered successfully!"
-      redirect "/users"
+      @cur_user = user
+      session[:user_id] = user.id
+      flash[:notice] = "Benvenuto in handsonxp! Ora sei un'utente registrato!"
+      redirect "/users/#{user.nick_url}"
     else
-      flash[:error] = "Error in the registration process"
+      flash[:error] = "Errore nel processo di registrazione"
       haml :"users/new"
     end
   end
@@ -38,7 +41,7 @@ class Handsonxp < Sinatra::Base
   
   delete "/users/:nick_url" do
     user.destroy
-    flash[:notice] = "User deleted"
+    flash[:notice] = "Utente cancellato"
     redirect "/users"
   end
   

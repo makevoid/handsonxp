@@ -56,8 +56,9 @@ class Handsonxp < Sinatra::Base
   require "#{APP_PATH}/models/user"
 
   def not_found(object=nil)
-    halt 404, "404 - Page Not Found"
+    halt 404, haml(:"404")
   end
+  
   
   CATEGORIES = ["Arte e Artigianato", "Multimedia", "Disegno e pittura", "Fotografia", "Computer Land", "Green Economy", "Blue Economy", "Altro"]
   
@@ -67,10 +68,6 @@ class Handsonxp < Sinatra::Base
   helpers do
     def admin?
       cur_user.admin?
-    end
-    
-    def user
-      @user ||= User.get(1) 
     end
     
     def home?

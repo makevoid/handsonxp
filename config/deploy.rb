@@ -11,7 +11,7 @@ set :repository, "git://github.com/makevoid/#{application}.git"  # public
 
 set :scm, "git"
 set :branch, "master"
-set :deploy_via, :remote_cache
+#set :deploy_via, :remote_cache
 
 set :password, File.read("/Users/makevoid/.password").strip
 
