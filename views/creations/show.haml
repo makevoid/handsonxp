@@ -7,7 +7,7 @@
   
 
 .subnav
-  - link_to "indietro", "/users/#{user.nick_url}/creations", class: "btn"
+  -# link_to "indietro", "/users/#{user.nick_url}/creations", class: "btn"
   - if logged_in? && user.creations.include?(creation)
     .right
       - link_to "cancella", "/creations/#{creation.name_url}", class: "btn", method: "delete"

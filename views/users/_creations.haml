@@ -5,5 +5,8 @@
     
   - else
     %li.no_creations 
-      Non hai ancora aggiunto un lavoro
-      - link_to "Inizia ora!", "/creations/new", class: "btn"
+      - if @cur_user == @user
+        Non hai ancora aggiunto un lavoro
+        - link_to "Inizia ora!", "/creations/new", class: "btn"
+      - else
+        L'utente non ha ancora caricato nessuna opera.

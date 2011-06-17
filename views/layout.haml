@@ -41,8 +41,8 @@
           .clear
       -# unless home?
       %nav
-        - link_to "Lavori", "/creations", class: "btn"
-        - link_to "Artisti", "/users", class: "btn"
+        - link_to "Opere", "/creations", class: "btn"
+        - link_to "Autori", "/users", class: "btn"
         - if logged_in?
           - link_to "I miei lavori", "/users/#{cur_user.nick_url}/creations", class: "btn"
       #content
