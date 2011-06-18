@@ -36,7 +36,7 @@ class Handsonxp < Sinatra::Base
   
   configure :development do
     register Sinatra::Reloader
-    also_reload ["controllers/*.rb", "models/*.rb"]
+    also_reload ["#{APP_PATH}/models/*.rb"]
     set :public, "public"
     set :static, true
   end

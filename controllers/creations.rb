@@ -24,7 +24,7 @@ class Handsonxp < Sinatra::Base
   post "/creations" do
     @file = params[:file]
     @creation = cur_user.creations.new(params[:creation])
-    if @creation.save
+    if @creation.save && !@file.nil?
       file = @file[:tempfile].read
       
       image = MiniMagick::Image.read(file)
@@ -33,10 +33,10 @@ class Handsonxp < Sinatra::Base
       path = "#{APP_PATH}/public/creations/#{creation.id}.png"
       image.write path
       
-      flash[:notice] = "Creation inserted!"
+      flash[:notice] = "Opera inserita!"
       redirect "/users/#{cur_user.nick_url}/creations"
     else
-      flash[:error] = "Error saving the creation"
+      flash[:error] = "Errore nell'inserimento dell'opera, controllare di aver inserito tutti i dati"
       haml :"creations/new"
     end
   end
