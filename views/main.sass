@@ -332,11 +332,11 @@ p.nomessage
     
     
 #lefty
-  width: 70%
+  width: 75%
   float: left
   
 #righty
-  width: 30%
+  width: 25%
   float: right
     
 #creations, #what_i_do
@@ -354,6 +354,7 @@ p.nomessage
     img 
       +rounded(15px)
     p.title
+      max-width: 220px
       margin-bottom: 10px
       .name
         font-size: 1.3em
@@ -361,11 +362,13 @@ p.nomessage
   img
     margin: 0 auto
     display: block
-    max-width: 400px
+    max-width: 220px
     
-.home #lefty
+.home #lefty    
+  p.title
+    max-width: 220px
   img
-    width: 320px
+    width: 220px
     
 p.info
   margin-bottom: 10px
