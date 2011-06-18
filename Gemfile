@@ -15,4 +15,6 @@ gem 'dm-migrations'
 gem 'dm-validations'
 gem "extlib"
 
+gem "mini_magick"
+
 gem 'voidtools', git: "git://github.com/makevoid/voidtools"

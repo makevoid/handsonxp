@@ -9,6 +9,7 @@ APP_PATH = path
 require 'pony'
 require "#{path}/lib/pony_gmail"
 
+require 'mini_magick'
 
 class String
   def capitalizeall

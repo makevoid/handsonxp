@@ -9,6 +9,7 @@ class Creation
   property :description, Text
   
   belongs_to :user
+  property :user_id, Integer
 
   default_scope(:default).update( order: [:id.desc] )
   
@@ -19,5 +20,6 @@ class Creation
   before :valid? do
     self.name_url = name.urlize
   end
-
+  
+  
 end

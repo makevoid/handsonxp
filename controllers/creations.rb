@@ -24,12 +24,15 @@ class Handsonxp < Sinatra::Base
   post "/creations" do
     @file = params[:file]
     @creation = cur_user.creations.new(params[:creation])
-    
     if @creation.save
       file = @file[:tempfile].read
-          
+      
+      image = MiniMagick::Image.read(file)
+      image.sample "1200x800"
+      image.format "png"
       path = "#{APP_PATH}/public/creations/#{creation.id}.png"
-      File.open(path, "w") { |f| f.write file }
+      image.write path
+      
       flash[:notice] = "Creation inserted!"
       redirect "/users/#{cur_user.nick_url}/creations"
     else
