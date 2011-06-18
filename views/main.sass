@@ -146,6 +146,7 @@ $alt: #666
 $links: #444
 $orange: #F70
 $lorange: #FFCA6B
+$yellow: #FFF100
 
 @font-face
   font-family: Adventurer
@@ -414,8 +415,10 @@ img.main_img
 span.yellow
   font-weight: bold
   font-size: 1.2em
-  background: #FFF100
-  padding: 0 4px
+  background: $yellow
+  padding: 3px 9px
+  +rounded(6px)
+  
   
   
 .desc
@@ -426,6 +429,31 @@ span.yellow
     margin-bottom: 4px
   p
     font-size: 1em
-    
 
+.just
+  text-align: justify
+.tcent
+  text-align: center
+
+.mex.cent
+  margin: 12px auto 2px
+  display: block
+  width: 200px
   
+.h3s
+  margin: 12px
+  h3
+    font-size: 1.25em
+    
+p#describe
+  font-size: 1.2em
+  
+p#gratis
+  margin: 13px 0 0
+  color: $orange
+  
+p#eyci
+  margin: 20px 0 0
+  
+p.stop
+  margin: 20px 0 0 
