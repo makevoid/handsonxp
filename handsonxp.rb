@@ -36,7 +36,7 @@ class Handsonxp < Sinatra::Base
   
   configure :development do
     register Sinatra::Reloader
-    also_reload ["#{APP_PATH}/models/*.rb"]
+    also_reload ["#{APP_PATH}/models/*.rb", "#{APP_PATH}/controllers/*.rb"]
     set :public, "public"
     set :static, true
   end
@@ -94,12 +94,19 @@ class Handsonxp < Sinatra::Base
     
     # auth
     
+    def require_login
+      unless cur_user
+        flash[:notice] = "Effettua l'accesso per accedere alla sezione"
+        redirect "/" 
+      end
+    end
+    
     def logged_in?
       cur_user
     end
     
     def cur_user
-      return false unless session[:user_id]
+      return nil unless session[:user_id]
       @cur_user ||= User.get(session[:user_id]) 
     end
     

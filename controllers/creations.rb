@@ -12,6 +12,7 @@ class Handsonxp < Sinatra::Base
   end
   
   get "/creations/new" do
+    require_login
     haml :"creations/new"
   end
   
@@ -23,6 +24,7 @@ class Handsonxp < Sinatra::Base
   
   post "/creations" do
     @file = params[:file]
+    require_login
     @creation = cur_user.creations.new(params[:creation])
     if @creation.save && !@file.nil?
       file = @file[:tempfile].read
