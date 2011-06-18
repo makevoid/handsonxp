@@ -1,5 +1,6 @@
 source "http://rubygems.org"
 
+gem "maruku"
 gem 'haml'
 gem 'sass'
 gem 'sinatra'

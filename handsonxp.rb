@@ -113,7 +113,16 @@ class Handsonxp < Sinatra::Base
   get "/contacts" do
     haml :contacts
   end
-    
+
+  get "/eyci" do
+    haml :eyci
+  end
+
+
+  get "/privacy" do
+    haml :privacy
+  end
+
   get '/css/main.css' do
     sass :main
   end
