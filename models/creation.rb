@@ -13,8 +13,9 @@ class Creation
 
   default_scope(:default).update( order: [:id.desc] )
   
-  def link
-    "/creations/#{id}.png"
+  def link(format=nil)
+    format = "#{format}s/" unless format.nil?
+    "/creations/#{format}#{id}.png"
   end
 
   before :valid? do
