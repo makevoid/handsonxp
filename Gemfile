@@ -8,6 +8,8 @@ gem "sinatra-content-for"
 gem "sinatra-reloader"
 gem 'rack-flash'
 gem 'pony'
+gem "tmail"
+
 #gem 'rack-static'
 gem 'dm-core'
 # gem 'dm-sqlite-adapter'

@@ -49,6 +49,8 @@ class Handsonxp < Sinatra::Base
   helpers Sinatra::ContentFor
   set :method_override, true
   
+  set :raise_errors, true
+  
   require "#{APP_PATH}/lib/view_helpers"
   helpers ViewHelpers
 
