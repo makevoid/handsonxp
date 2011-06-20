@@ -338,6 +338,8 @@ p.nomessage
   width: 25%
   float: right
     
+$imgw: 200px    
+    
 #creations, #what_i_do
   li
     +gradient($lorange, #FF9145)
@@ -353,7 +355,7 @@ p.nomessage
     img 
       +rounded(15px)
     p.title
-      max-width: 220px
+      max-width: $imgw
       margin-bottom: 10px
       .name
         font-size: 1.3em
@@ -361,13 +363,13 @@ p.nomessage
   img
     margin: 0 auto
     display: block
-    max-width: 220px
+    max-width: $imgw
     
 .home #lefty    
   p.title
-    max-width: 220px
+    max-width: $imgw
   img
-    width: 220px
+    width: $imgw
     
 p.info
   margin-bottom: 10px
@@ -475,3 +477,14 @@ p.stop
   float: left
   font-size: 0.7em
   margin: 0 0 0 210px
+  
+.pagination
+  margin: 10px 20px
+  a
+    padding: 3px 6px
+    background: $orange + #222
+    border: 1px solid $orange + #222
+  a:hover
+    color: $orange - #333
+    border: 1px solid $orange
+    background: #FFF

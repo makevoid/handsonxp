@@ -10,7 +10,13 @@ class Creation
   
   belongs_to :user
   property :user_id, Integer
-
+  
+  require 'voidtools/dm/paginable'
+  include Voidtools::Paginable
+  def self.per_page
+    12
+  end
+  
   default_scope(:default).update( order: [:id.desc] )
   
   def link(format=nil)

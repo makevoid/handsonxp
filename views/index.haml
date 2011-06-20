@@ -2,6 +2,13 @@
   %h3 Gli ultimi lavori pubblicati:
   %ul#creations
     = partial creations
+  .clear
+  
+  .pagination                                        
+    pag:
+    - Creation.pages.times do |i|
+      %a{ :href => "/?page=#{i}" }= i+1
+    
 #righty
   .h3s
     %h3 Ti consideri originale?

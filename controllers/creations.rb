@@ -78,7 +78,7 @@ class Handsonxp < Sinatra::Base
     end
     
     def creations
-      @creations ||= Creation.all
+      @creations ||= Creation.paginate(page: params[:page])
     end
     
     def creation
