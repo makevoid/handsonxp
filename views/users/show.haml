@@ -4,22 +4,26 @@
   - link_to "Modifica il tuo profilo", "/users/#{user.nick_url}/edit", class: "btn editprof"
 
 #user
-  - unless user.address.blank? ||  user.zip.blank? ||    user.city.blank? ||  user.country.blank? || user.name.blank?
-    .box
-      %h3= user.name    
-      .sizeup
-        - unless user.address.blank? ||  user.zip.blank? ||  user.city.blank? ||  user.country.blank?
-          %p 
-            %span Indirizzo:
-            = user.address
-            = user.zip
-            = user.city
-            = user.country
-        - unless user.bio.blank?
-          %p 
-            %span Bio:
-            = user.bio.gsub(/http:\/\/(.+)/, '<a href=\'http://\1\'>\1</a>')
-    .clear
+
+  .box
+    %h3= user.name
+      
+    .sizeup
+      - unless user.address.blank? ||  user.zip.blank? ||  user.city.blank? ||  user.country.blank?
+        %p 
+          %span Indirizzo:
+          = user.address
+          = user.zip
+          = user.city
+          = user.country
+      - unless user.bio.blank?
+        %p 
+          %span Bio:
+          = user.bio.gsub(/http:\/\/(.+)/, '<a href=\'http://\1\'>\1</a>')
+
+  .clear
+  - unless user.id == 2 # makevoid
+    %a.button.smallbtn{ href: "mailto:#{user.email}" } Contatta l'utente          
       
 %h3 Opere:
 = partial :"users/_creations"
