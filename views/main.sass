@@ -146,6 +146,7 @@ $alt: #666
 $links: #444
 $orange: #F70
 $lorange: #FFCA6B
+$dorange: #FF9145
 $yellow: #FFF100
 
 @font-face
@@ -306,7 +307,7 @@ p.nomessage
   
 
 .box  
-  +gradient($lorange, #FF9145)
+  +gradient($lorange, $dorange)
   padding: 5px 15px
   +rounded(15px)
 
@@ -342,7 +343,7 @@ $imgw: 180px
     
 #creations, #what_i_do
   li
-    +gradient($lorange, #FF9145)
+    +gradient($lorange, $dorange)
     padding: 10px
     margin: 8px 10px 0 0
     display: block
