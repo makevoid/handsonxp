@@ -25,5 +25,6 @@
 - unless creation.description.blank?
   .desc
     %p.head Descrizione:
-    %p
-      = creation.description
+    .desc_content
+      :markdown
+        #{creation.description}
