@@ -1,18 +1,16 @@
-# APP
+# Hands-On XP
 
-### analytics
+### simple webapp to show pictures about hands-on works (arts, crafts, engineering and other stuff that come from [ingenium](http://en.wiktionary.org/wiki/ingenium))
 
-https://www.google.com/analytics/settings/home?scid=ANALYTICS_ID
+### made with
 
-### textmate js
+- sinatra
+- datamapper
+- haml, sass
 
-function open_in_textmate(path) {
-  app_name = "APP_NAME"
-  url = "txmt://open?url=file://~/Sites/"+app_name+"/"+path
-  document.location = url
-}
+### TODO:
 
-$("#open").click(function(){
-  file = "views/index.haml"
-  open_in_textmate(file)
-})
+- i18n basic support (models + view helpers)
+- eng translation
+
+- refuse future features or big ui changes from the "father" of the project unless he brings in lots of good users :p yes! that's challenging! :)
