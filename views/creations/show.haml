@@ -14,7 +14,8 @@
   
 
 %a{ href: @creation.link, class: "main_img" }
-  - image_tag( @creation.link, class: "main_img")
+  - img = nophoto? @creation
+  - image_tag( img, class: "main_img")
 
 .desc.cat
   %p.head Categoria:

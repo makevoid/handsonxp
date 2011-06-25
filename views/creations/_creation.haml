@@ -8,4 +8,5 @@
       \-
       - user = creation.user
       - link_to user.nick.capitalize, "/users/#{user.nick_url}", class: "nick"
-  - link_to "<img src='#{creation.link(:thumb)}' />", "/creations/#{creation.name_url}"
+  - img = nophoto? creation, :thumb
+  - link_to "<img src='#{img}' />", "/creations/#{creation.name_url}"

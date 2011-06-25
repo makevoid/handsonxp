@@ -24,6 +24,11 @@ class Creation
     "/creations/#{format}#{id}.png"
   end
 
+  def path(format=nil)
+    format = "#{format}s/" unless format.nil?
+    "#{APP_PATH}/public/creations/#{format}#{id}.png"
+  end
+
   before :valid? do
     self.name_url = name.urlize
   end
