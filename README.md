@@ -14,3 +14,12 @@
 - eng translation
 
 - refuse future features or big ui changes from the "father" of the project unless he brings in lots of good users :p yes! that's challenging! :)
+
+--------
+
+wtf
+
+links:
+
+- spiegazione: [http://www.fisica.uniud.it/irdis/Ottica/Fotocella/Fotocella.htm](http://www.fisica.uniud.it/irdis/Ottica/Fotocella/Fotocella.htm)
+- video: [http://www.youtube.com/watch?v=jL1KiWN26Q0](http://www.youtube.com/watch?v=jL1KiWN26Q0)
