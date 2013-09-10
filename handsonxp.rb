@@ -1,7 +1,7 @@
 require 'haml'
 require 'sass'
 require 'sinatra/base'
-require "sinatra/reloader" 
+# require "sinatra/reloader" 
 
 path = File.expand_path "../", __FILE__
 APP_PATH = path
@@ -35,8 +35,6 @@ class Handsonxp < Sinatra::Base
   
   
   configure :development do
-    register Sinatra::Reloader
-    also_reload ["#{APP_PATH}/models/*.rb", "#{APP_PATH}/controllers/*.rb", "#{APP_PATH}/lib/*.rb"]
     set :public, "public"
     set :static, true
   end
@@ -45,8 +43,6 @@ class Handsonxp < Sinatra::Base
   require 'rack-flash'
   enable :sessions
   use Rack::Flash, sweep: true
-  require 'sinatra/content_for'
-  helpers Sinatra::ContentFor
   set :method_override, true
   
   set :raise_errors, true
